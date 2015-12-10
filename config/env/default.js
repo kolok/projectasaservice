@@ -22,7 +22,7 @@ module.exports = {
     secure: false
   },
   // sessionSecret should be changed for security measures and concerns
-  sessionSecret: 'MEAN',
+  sessionSecret: 'wah5lu1OAic9HaiBchoo0AQueiPhea7dmu4AiroaEiyoo0ioThee8queShei3fe6',
   // sessionKey is set to the generic sessionId key used by PHP applications
   // for obsecurity reasons
   sessionKey: 'sessionId',
