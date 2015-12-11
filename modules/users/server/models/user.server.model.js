@@ -33,8 +33,8 @@ var validateLocalStrategyEmail = function (email) {
  * A Validation function for strategy Website
  */
 var validateStrategyWebsite = function(website) {
-  return (website.length == 0 || validator.isURL(website));
-}
+  return (website.length === 0 || validator.isURL(website));
+};
 
 /**
  * User Schema
