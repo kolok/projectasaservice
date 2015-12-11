@@ -3,6 +3,7 @@
 angular.module('users').controller('EditProfileController', ['$scope', '$http', '$location', 'Users', 'Authentication',
   function ($scope, $http, $location, Users, Authentication) {
     $scope.user = Authentication.user;
+    $scope.profileTypes = ['ProjectOwner','Developer'];
 
     // Update a user profile
     $scope.updateUserProfile = function (isValid) {
@@ -13,6 +14,8 @@ angular.module('users').controller('EditProfileController', ['$scope', '$http', 
 
         return false;
       }
+
+console.log($scope.user);
 
       var user = new Users($scope.user);
 

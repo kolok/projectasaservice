@@ -1,5 +1,5 @@
 <div ng-controller="AuthenticationController">
-  <h3 class="col-md-12 text-center">Or sign up using your email</h3>
+  <h3 class="col-md-12 text-center">Sign up using your email</h3>
   <div class="col-xs-offset-2 col-xs-8 col-md-offset-4 col-md-4">
     <form name="userForm" ng-submit="signup(userForm.$valid)" class="signin" novalidate autocomplete="off">
       <fieldset>
@@ -40,6 +40,23 @@
             <p class="help-block error-text" ng-message="minlength">Password is too short.</p>
           </div>
         </div>
+        <div class="form-group" show-errors>
+          <label for="website">Website</label>
+          <input type="url" id="website" name="website" class="form-control" ng-model="credentials.website" placeholder="Website" lowercase>
+          <div ng-messages="userForm.website.$error" role="alert">
+            <p class="help-block error-text" ng-message="url">Website should be a valid url.</p>
+          </div>
+        </div>
+        <div class="form-group">
+          <input type="checkbox" id="isProjectOwner" name="isProjectOwner" class="form-control" ng-model="credentials.isProjectOwner">
+          <label for="isProjectOwner">Project owner</label>
+        </div>
+        <span>explanation of project owner</span>
+        <div class="form-group">
+          <input type="checkbox" id="isDeveloper" name="isDeveloper" class="form-control" ng-model="credentials.isDeveloper" ng-init="credentials.isDeveloper=true">
+          <label for="isDeveloper">Developer</label>
+        </div>
+        <span>explanation of developer</span>
         <div class="text-center form-group">
           <button type="submit" class="btn btn-large btn-primary">Sign up</button>
           &nbsp; or&nbsp;

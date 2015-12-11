@@ -30,6 +30,13 @@ var validateLocalStrategyEmail = function (email) {
 };
 
 /**
+ * A Validation function for strategy Website
+ */
+var validateStrategyWebsite = function(website) {
+  return (website.length == 0 || validator.isURL(website));
+}
+
+/**
  * User Schema
  */
 var UserSchema = new Schema({
@@ -103,6 +110,37 @@ var UserSchema = new Schema({
   },
   resetPasswordExpires: {
     type: Date
+  },
+  defaultProfileType: {
+    type: [{
+      type: String,
+      enum: ['ProjectOwner', 'Developer']
+    }],
+    default: ['Developer'],
+    required: 'Please provide at least one default profile type'
+  },
+  isDeveloper: {
+    type: Boolean,
+    default: true
+  },
+  isProjectOwner: {
+    type: Boolean,
+    default: false
+  },
+  website: {
+    type: String,
+    trim: true,
+    validate: [validateStrategyWebsite, "Website should be an URL or shoudn't be"]
+  },
+  connected: {
+    type: Date,
+  },
+  status: {
+    type: [{
+      type: String,
+      enum: ['pending', 'active', 'inactive']
+    }],
+    default: ['pending']
   }
 });
 
@@ -114,7 +152,6 @@ UserSchema.pre('save', function (next) {
     this.salt = crypto.randomBytes(16).toString('base64');
     this.password = this.hashPassword(this.password);
   }
-
   next();
 });
 

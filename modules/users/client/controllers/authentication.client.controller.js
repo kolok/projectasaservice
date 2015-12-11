@@ -3,7 +3,6 @@
 angular.module('users').controller('AuthenticationController', ['$scope', '$state', '$http', '$location', '$window', 'Authentication',
   function ($scope, $state, $http, $location, $window, Authentication) {
     $scope.authentication = Authentication;
-
     // Get an eventual error defined in the URL query string:
     $scope.error = $location.search().err;
 
