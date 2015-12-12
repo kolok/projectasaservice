@@ -48,8 +48,9 @@ exports.invokeRolesPolicies = function () {
 exports.isAllowed = function (req, res, next) {
   var roles = (req.user) ? req.user.roles : ['guest'];
 
+//TODO: manage the tag rights edit and remove should be available only for admin 
   // If an tag is being processed and the current user created it then allow any manipulation
-  if (req.tag && req.user && req.tag.user.id === req.user.id) {
+  if (req.tag) {
     return next();
   }
 

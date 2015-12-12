@@ -14,20 +14,11 @@ var TagSchema = new Schema({
     type: Date,
     default: Date.now
   },
-  title: {
+  label: {
     type: String,
     default: '',
     trim: true,
-    required: 'Title cannot be blank'
-  },
-  content: {
-    type: String,
-    default: '',
-    trim: true
-  },
-  user: {
-    type: Schema.ObjectId,
-    ref: 'User'
+    required: 'Label cannot be blank'
   }
 });
 

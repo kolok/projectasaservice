@@ -13,7 +13,6 @@ var path = require('path'),
  */
 exports.create = function (req, res) {
   var tag = new Tag(req.body);
-  tag.user = req.user;
 
   tag.save(function (err) {
     if (err) {
@@ -39,8 +38,7 @@ exports.read = function (req, res) {
 exports.update = function (req, res) {
   var tag = req.tag;
 
-  tag.title = req.body.title;
-  tag.content = req.body.content;
+  tag.label = req.body.label;
 
   tag.save(function (err) {
     if (err) {
@@ -74,7 +72,7 @@ exports.delete = function (req, res) {
  * List of Tags
  */
 exports.list = function (req, res) {
-  Tag.find().sort('-created').populate('user', 'displayName').exec(function (err, tags) {
+  Tag.find().sort('-created').exec(function (err, tags) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
@@ -96,7 +94,7 @@ exports.tagByID = function (req, res, next, id) {
     });
   }
 
-  Tag.findById(id).populate('user', 'displayName').exec(function (err, tag) {
+  Tag.findById(id).exec(function (err, tag) {
     if (err) {
       return next(err);
     } else if (!tag) {

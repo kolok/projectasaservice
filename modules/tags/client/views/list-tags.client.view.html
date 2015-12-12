@@ -4,14 +4,7 @@
   </div>
   <div class="list-group">
     <a ng-repeat="tag in tags" ui-sref="tags.view({tagId: tag._id})" class="list-group-item">
-      <small class="list-group-item-text">
-        Posted on
-        <span ng-bind="tag.created | date:'mediumDate'"></span>
-        by
-        <span ng-bind="tag.user.displayName"></span>
-      </small>
-      <h4 class="list-group-item-heading" ng-bind="tag.title"></h4>
-      <p class="list-group-item-text" ng-bind="tag.content"></p>
+      <h4 class="list-group-item-heading" ng-bind="tag.label"></h4>
     </a>
   </div>
   <div class="alert alert-warning text-center" ng-if="tags.$resolved && !tags.length">

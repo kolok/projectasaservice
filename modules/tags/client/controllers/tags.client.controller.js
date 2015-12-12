@@ -17,8 +17,7 @@ angular.module('tags').controller('TagsController', ['$scope', '$stateParams', '
 
       // Create new Tag object
       var tag = new Tags({
-        title: this.title,
-        content: this.content
+        label: this.label
       });
 
       // Redirect after save
@@ -26,8 +25,7 @@ angular.module('tags').controller('TagsController', ['$scope', '$stateParams', '
         $location.path('tags/' + response._id);
 
         // Clear form fields
-        $scope.title = '';
-        $scope.content = '';
+        $scope.label = '';
       }, function (errorResponse) {
         $scope.error = errorResponse.data.message;
       });
