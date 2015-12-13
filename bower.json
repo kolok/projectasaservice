@@ -13,6 +13,7 @@
     "angular-ui-router": "~0.2",
     "angular-file-upload": "1.1.5",
     "angular-messages": "1.3.17",
+    "angular-tags": "^0.2.10",
     "ng-tags-input": "^3.0.0"
   },
   "resolutions": {

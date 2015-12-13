@@ -1,7 +1,7 @@
 'use strict';
 
 // Configuring the Projects module
-angular.module('projects', ['ngTagsInput']).run(['Menus',
+angular.module('projects', ['ngTagsInput', 'decipher.tags', 'ui.bootstrap.typeahead']).run(['Menus',
   function (Menus) {
     // Add the projects dropdown item
     Menus.addMenuItem('topbar', {

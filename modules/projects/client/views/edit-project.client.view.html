@@ -16,6 +16,24 @@
           <label for="content">Content</label>
           <textarea name="content" ng-model="project.content" id="content" class="form-control" cols="30" rows="10" placeholder="Content"></textarea>
         </div>
+        <div id="projectTags" style="display:none;">{{project.tags}}</div>
+        <div class="form-group">
+          <label for="tags">Tags</label>
+          <tags-input name="tags" id="tags" ng-model="tags" ng-init="tags=initTags()"></tags-input>
+        </div>
+        <!--
+        TODO : manage tags with angular-tags
+          <label for="tags">Tags</label>
+          <tags  model="tags">
+          </tags>
+          <tags
+            data-options="{addable: true, classes: {white: 'black', red: 'red'}}"
+            ng-init="tags=initTags()"
+            data-src="s as s.name for s in project.tags"
+            data-model="project.tags">
+          </tags>
+        -->
+
         <div class="form-group">
           <input type="submit" value="Update" class="btn btn-default">
         </div>

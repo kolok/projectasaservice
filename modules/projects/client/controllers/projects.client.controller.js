@@ -1,9 +1,25 @@
 'use strict';
 
 // Projects controller
-angular.module('projects').controller('ProjectsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Projects',
-  function ($scope, $stateParams, $location, Authentication, Projects) {
+angular.module('projects').controller('ProjectsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Projects', 'Tags', 
+  function ($scope, $stateParams, $location, Authentication, Projects, Tags) {
     $scope.authentication = Authentication;
+
+    var allTags = Tags.query();
+
+    $scope.initTags = function() {
+      var tagList = [];
+      $scope.project.$promise.then(
+        function(data) {
+          data.tags.forEach(
+            function(tag) {
+              tagList.push({"text":tag});
+            }
+          );
+        }
+      );
+      return tagList;
+    };
 
     // Create new Project
     $scope.create = function (isValid) {
@@ -61,6 +77,11 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
       }
 
       var project = $scope.project;
+      var tags = $scope.tags;
+
+      project.tags = tags.map(function(tag) {
+        return tag.text;
+      });
 
       project.$update(function () {
         $location.path('projects/' + project._id);

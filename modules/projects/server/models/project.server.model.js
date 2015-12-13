@@ -26,8 +26,8 @@ var ProjectSchema = new Schema({
     trim: true
   },
   tags: [ {
-    type : Schema.ObjectId,
-    ref : 'Tag'
+    type : String,
+    trim: true
   } ],
   user: {
     type: Schema.ObjectId,
